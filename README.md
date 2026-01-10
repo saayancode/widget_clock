@@ -1,2 +1,2 @@
-# widjet_clock_20260110
+# widget_clock_260110
 Notionのウィジェット時計
