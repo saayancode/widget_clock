@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>2026/01/10_clock</title>
+    
+
+  </head>
+    
+  <body>
+  <!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digital Clock</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #ffffff;
+      font-family: 'Courier New', Consolas, monospace;
+    }
+
+    .clock {
+      width: 250px;
+      height: 250px;
+      border-radius: 50%;
+      background-color: #333333;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .time {
+      font-size: 48px;
+      font-weight: bold;
+      color: #ffffff;
+      letter-spacing: 2px;
+    }
+
+    .date {
+      font-size: 14px;
+      color: #ffffff;
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+  <div class="clock">
+    <div class="time" id="clock">00:00</div>
+    <div class="date" id="date">2026/01/10</div>
+  </div>
+
+  <script>
+    function updateClock() {
+      const now = new Date();
+      const hours = String(now.getHours()).padStart(2, '0');
+      const minutes = String(now.getMinutes()).padStart(2, '0');
+      document.getElementById('clock').textContent = `${hours}:${minutes}`;
+
+      const year = now.getFullYear();
+      const month = String(now.getMonth() + 1).padStart(2, '0');
+      const day = String(now.getDate()).padStart(2, '0');
+      document.getElementById('date').textContent = `${year}/${month}/${day}`;
+    }
+
+    updateClock();
+    setInterval(updateClock, 1000);
+  </script>
+</body>
+</html>
+    
+  </body>
+  
+</html>
