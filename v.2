@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digital Clock</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: transparent;
+      font-family: 'Courier New', Consolas, monospace;
+    }
+
+    .clock {
+      width: min(250px, 70vw);
+      height: min(250px, 70vw);
+      border-radius: 50%;
+      background-color: #FF7F7F;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: clamp(4px, 2vw, 8px);
+    }
+
+    .time {
+      font-size: clamp(28px, 12vw, 48px);
+      font-weight: bold;
+      color: #f5f0ed;
+      letter-spacing: 2px;
+    }
+
+    .date {
+      font-size: clamp(10px, 4vw, 14px);
+      color: #f5f0ed;
+      opacity: 0.9;
+    }
+  </style>
+</head>
+<body>
+  <div class="clock">
+    <div class="time" id="clock">00:00</div>
+    <div class="date" id="date">Sat, Jan 10</div>
+  </div>
+
+  <script>
+    function updateClock() {
+      const now = new Date();
+      const hours = String(now.getHours()).padStart(2, '0');
+      const minutes = String(now.getMinutes()).padStart(2, '0');
+      document.getElementById('clock').textContent = `${hours}:${minutes}`;
+
+      const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+      const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+      const day = now.getDate();
+      const month = months[now.getMonth()];
+      const weekday = days[now.getDay()];
+      document.getElementById('date').textContent = `${weekday}, ${month} ${day}`;
+    }
+
+    updateClock();
+    setInterval(updateClock, 1000);
+  </script>
+</body>
+</html>
